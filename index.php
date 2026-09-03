@@ -1,4 +1,5 @@
 <?php
+$current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -24,29 +25,37 @@
 
         }
 
-        nav {
-            background-color: #333;
-            padding: 10px;
+        .navbar {
+            background: linear-gradient(#ed0000, #e0044a, #de6372);
+            padding: 20px;
+            display: flex;
+            gap: 5px;
+            border-radius: 8px;
         }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav a {
+        .navbar a {
             color: white;
             text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s;
         }
 
-        nav a:hover {
-            color: lightblue;
+        .navbar a:hover {
+            background: white;
+            color: #8b2e36;
+        }
+
+        .navbar a.active {
+            background: white;
+            color: #8b2e39;
+            font-weight: bold;
+        }
+
+        .navbar {
+            align-content: center;
+            justify-content: center;
+            text-align: center;
         }
     </style>
 
@@ -77,22 +86,37 @@
 
 
 
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="notes.php">Notes</a></li>
-            <li><a href="quizzes.php">Quizzes</a></li>
-            <li><a href="chat.php"> Group Chat</a></li>
-        </ul>
-    </nav>
+    <div class="navbar">
+        <a href="index.php" class="<?php echo ($current_page == 'index.php') ? 'active' : ''; ?>">Home</a>
+        <a href="notes.php" class="<?php echo ($current_page == 'notes.php') ? 'active' : ''; ?>">Notes</a>
+        <a href="quizzes.php" class="<?php echo ($current_page == 'quizzes.php') ? 'active' : ''; ?>">Quizzes</a>
+        <a href="chat.php" class="<?php echo ($current_page == 'chat.php') ? 'active' : ''; ?>">Groupchat</a>
+    </div>
 
+    <div class="login-box">
+        <h2 style="text-align:center;">LOG-IN </h2>
 
+        <form action="login.php" method="POST">
+            <label>Username:</label><br>
+            <input type="Username" name="Username" placeholder="Username" required style="
+            text-align: middle;
+            align-content: center;
+            justify-content: center;
+            "><br>
+
+            <label>Password:</label><br>
+            <input type="password" name="password" placeholder="Password" required minlength="4"><br>
+
+            <button type="submit" name="login" onclick="window.location.href='notes.php'" style="
+            background: linear-gradient( #8b085f, #a93f86);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            ">Login</button><br>
+            <label style="text-align:center;" onclick="window.location.href='1.php'"> <a href="1.php">Register</a></label>
 
 </body>
 
 </html>
-
-/*notes for next time:
-1. finish the homepage design
-2. follow up on the other pages
-3. add more content on other pages */
