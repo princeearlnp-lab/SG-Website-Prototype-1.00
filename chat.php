@@ -1,4 +1,5 @@
 <?php
+$current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -16,33 +17,45 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             font-size: 16px;
-            background: rgb(86, 136, 96);
-            color: #cfbcee;
+            background: linear-gradient(#4e04e0, #6304e0, #7a04e0, #8f04e0, #a404e0);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
         }
 
-        nav {
-            background-color: #333;
-            padding: 10px;
+        .navbar {
+            background: linear-gradient(#5a12e9, #6519e8, #823fe7);
+            padding: 20px;
+            display: flex;
+            gap: 5px;
+            border-radius: 8px;
         }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav a {
+        .navbar a {
             color: white;
             text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s;
         }
 
-        nav a:hover {
-            color: lightblue;
+        .navbar a:hover {
+            background: white;
+            color: #2E8B57;
+        }
+
+        .navbar a.active {
+            background: white;
+            color: #8b2e39;
+            font-weight: bold;
+        }
+
+        .navbar {
+            align-content: center;
+            justify-content: center;
+            text-align: center;
         }
     </style>
 
@@ -55,14 +68,12 @@
 
     <hr>
 
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="notes.php">Notes</a></li>
-            <li><a href="quizzes.php">Quizzes</a></li>
-            <li><a href="chat.php"> Group Chat</a></li>
-        </ul>
-    </nav>
+    <div class="navbar">
+        <a href="index.php" class="<?php echo ($current_page == 'index.php') ? 'active' : ''; ?>">Home</a>
+        <a href="notes.php" class="<?php echo ($current_page == 'notes.php') ? 'active' : ''; ?>">Notes</a>
+        <a href="quizzes.php" class="<?php echo ($current_page == 'quizzes.php') ? 'active' : ''; ?>">Quizzes</a>
+        <a href="chat.php" class="<?php echo ($current_page == 'chat.php') ? 'active' : ''; ?>">Groupchat</a>
+    </div>
 
     <br>
 
